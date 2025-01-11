@@ -19,6 +19,10 @@ export class DbClient {
     console.log("Database pool created");
   }
 
+  public async connect() {
+    this._pool.connect();
+  }
+
   public get pool() {
     return this._pool;
   };
