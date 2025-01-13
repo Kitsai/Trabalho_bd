@@ -1,4 +1,4 @@
 export interface Fornecedor {
-  cod: number,
+  codFor: number,
   name: string
 }

@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev src/app.ts",
     "dev:watch": "nodemon src/app.ts",
-    "init:db":"ts-node-dev src/database/initialization/init.database.ts",
-    "init:data":"ts-node-dev src/database/initialization/init.data.ts"
+    "init:db": "ts-node-dev src/database/initialization/init.database.ts",
+    "init:data": "ts-node-dev src/database/initialization/init.data.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@types/pg": "^8.11.10",
+    "axios": "^1.7.9",
     "cors": "^2.8.5",
     "dotnet": "^1.1.4",
     "express": "^4.21.2",

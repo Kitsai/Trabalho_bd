@@ -23,11 +23,16 @@ export class DbClient {
     this._pool.connect();
   }
 
+  public async query(q: string, v?: any[]) {
+    return this._pool.query(q, v);
+  }
+
   public get pool() {
     return this._pool;
   };
 
   public static get Instance(): DbClient {
-    return DbClient._instance || new DbClient();
+    if (!this._instance) this._instance = new DbClient();
+    return DbClient._instance;
   }
 }
