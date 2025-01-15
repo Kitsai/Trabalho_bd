@@ -5,6 +5,10 @@ import { Fornecedor } from '../../fornecedor/model/fornecedor.model';
 const path = process.cwd() + '/src/database/initialization/data/';
 const db = DbClient.Instance;
 
+export async function initDatabaseData() {
+  initFornecedores();
+}
+
 async function initFornecedores() {
   const pT = fs.readFileSync(path + 'fornecedor.data.json', 'utf-8');
   const data: [Fornecedor] = JSON.parse(pT);
@@ -19,10 +23,6 @@ async function initFornecedores() {
       (e) => console.log("Erro ao inserir com " + e)
     );
   });
-}
-
-export async function initDatabaseData() {
-  initFornecedores();
 }
 
 initDatabaseData()

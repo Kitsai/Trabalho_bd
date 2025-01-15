@@ -7,7 +7,8 @@
     "dev": "ts-node-dev src/app.ts",
     "dev:watch": "nodemon src/app.ts",
     "init:db": "ts-node-dev src/database/initialization/init.database.ts",
-    "init:data": "ts-node-dev src/database/initialization/init.data.ts"
+    "init:data": "ts-node-dev src/database/initialization/init.data.ts",
+    "delete:db": "ts-node-dev src/database/initialization/delete.tables.ts"
   },
   "keywords": [],
   "author": "",
