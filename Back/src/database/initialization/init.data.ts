@@ -1,4 +1,5 @@
 import fs from 'fs'
+import { parse } from 'csv-parse';
 import { DbClient } from '../dbClient';
 import { Fornecedor } from '../../fornecedor/model/fornecedor.model';
 
@@ -10,18 +11,22 @@ export async function initDatabaseData() {
 }
 
 async function initFornecedores() {
-  const pT = fs.readFileSync(path + 'fornecedor.data.json', 'utf-8');
-  const data: [Fornecedor] = JSON.parse(pT);
+  const pT = fs.readFileSync(path + "fornecedor.data.csv");
   const query = `
   INSERT INTO fornecedor
   VALUES ($1, $2)
   RETURNING *;
   `;
-  data.forEach((row) => {
-    db.query(query, [row.codFor, row.name]).then(
-      (r) => console.log("Fornecedor " + r + "foi inserido"),
-      (e) => console.log("Erro ao inserir com " + e)
-    );
+  parse(pT, { delimiter: ',', columns: ['codFor', 'nome'] }, (e, res: Fornecedor[]) => {
+    if (e) console.error(e);
+    else {
+      res.forEach(({ codFor, nome }) => {
+        db.query(query, [codFor, nome]).then(
+          (r) => console.log("Fornecedor " + r + "foi inserido"),
+          (e) => console.log("Erro ao inserir com " + e)
+        );
+      })
+    }
   });
 }
 
