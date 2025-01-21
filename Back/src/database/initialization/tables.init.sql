@@ -1,18 +1,4 @@
-import { initDatabaseData } from "./init.data"
-import { DbClient } from "../dbClient";
-
-const db: DbClient = DbClient.Instance;
-
-export async function initDatabase() {
-  await DbClient.Instance.connect();
-
-  initTables();
-}
-
-// OK
-async function initTables() {
-  const query = `
-    CREATE TABLE fornecedor(
+CREATE TABLE fornecedor(
       codFor INT PRIMARY KEY,
       nome VARCHAR NOT NULL
     );
@@ -156,7 +142,7 @@ async function initTables() {
 
     CREATE TABLE mesa(
       codMes INT PRIMARY KEY,
-      nome VARCHAR,
+      nome CHAR(1),
       nLugares INT,
       reservada BOOL,
       codGar INT,
@@ -209,9 +195,3 @@ async function initTables() {
       FOREIGN KEY (codAli)
       REFERENCES alimento(codAli)
     );
-  `;
-
-  await db.query(query).catch((e) => console.error(e));
-}
-
-initDatabase()

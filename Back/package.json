@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "ts-node-dev src/app.ts",
     "dev:watch": "nodemon src/app.ts",
-    "init:db": "ts-node-dev src/database/initialization/init.database.ts",
-    "init:data": "ts-node-dev src/database/initialization/init.data.ts",
-    "delete:db": "ts-node-dev src/database/initialization/delete.tables.ts"
+    "db:init": "dotenv -- cross-var psql -h %DATABASE_HOST% -U %DATABASE_USER% -p %DATABASE_PORT% %DATABASE_NAME% -c \"\\i src/database/initialization/tables.init.sql\"",
+    "db:insert": "dotenv -- cross-var psql -h %DATABASE_HOST% -U %DATABASE_USER% -p %DATABASE_PORT% %DATABASE_NAME% -c \"\\i src/database/initialization/rows.insert.sql\"",
+    "db:delete": "dotenv -- cross-var psql -h %DATABASE_HOST% -U %DATABASE_USER% -p %DATABASE_PORT% %DATABASE_NAME% -c \"\\i src/database/initialization/tables.drop.sql\""
   },
   "keywords": [],
   "author": "",
@@ -17,7 +17,9 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.5",
+    "cross-var": "^1.1.0",
     "dotenv": "^16.4.7",
+    "dotenv-cli": "^8.0.0",
     "nodemon": "^3.1.9",
     "typescript": "^5.7.3"
   },
