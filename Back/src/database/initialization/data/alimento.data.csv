@@ -1,0 +1,64 @@
+1,Água,2,2,4
+2,Água com Gás,2,2,4
+3,Suco de Laranja,2,2,8
+4,Suco de Uva,2,2,8
+5,Suco de Limão,2,2,8
+6,Suco de Morango,2,2,8
+7,Suco de Maracujá,2,2,8
+8,Suco de Pêssego,2,2,8
+9,Chá Gelado de Limão,2,2,9
+10,Chá Gelado de Pêssego,2,2,9
+11,Refrigerante de Limão,2,2,7
+12,Refrigerante de Cola,2,2,7
+13,Refrigerante de Uva,2,2,7
+14,Refrigerante de Guaraná 2,2,7
+15,Refrigerante de Laranja,2,2,7
+16,Casq Chocolate,3,3
+17,Casq Mista,3,3
+18,Casq Baunilha,3,3
+19,Sund Bau Cho,1,1
+20,Sund Bau Mor,1,1
+21,Sund Bau Car,1,1
+22,Sund Bau Pis,1,1
+23,Sund Mis Cho,1,1
+24,Sund Mis Mor,1,1
+25,Sund Mis Car,1,1
+26,Sund Mis Pis,1,1
+27,Sund Cho Cho,1,1
+28,Sund Cho Mor,1,1
+29,Sund Cho Car,1,1
+30,Sund Cho Pis,1,1
+31,Milk Shake Cho,2,2
+32,Milk Shake Mor,2,2
+33,Milk Shake Car,2,2
+34,Milk Shake Pis,2,2
+34,Parmegiana de Frango,4,4
+35,Parmegiana de Carne,4,4
+36,Parmegiana Vegana,4,4
+37,Estrogonofe de Frango,4,4
+38,Estrogonofe de Carne,4,4
+39,Brasileiríssimo Frango,4,4
+40,Brasileiríssima Carne,4,4
+41,Picanha Assada,4,4
+42,Tilápia Grelhada,4,4
+43,Brasileiríssimo Vegano,4,4
+44,Salada Normal,4,4
+45,Salada César,4,4
+46,Salada Vegana,4,4
+47,Salada com Frango,4,4
+48,Salada com Carne,4,4
+49,Salada com Tilápia,4,4
+50,Frango à Milanesa,4,4
+51,Coxa de Frango,4,4
+52,Medalhão Suíno,4,4
+53,Bife a Cavalo,4,4
+54,Frango a Passarinho,4,4
+55,Linguiça Suína,4,4
+56,Linguiça de Frango,4,4
+57,Filé Mignon,4,4
+58,Costela Bovina,4,4
+59,Costela Suína,4,4
+60,Salmão Grelhado,4,4
+61,Schnitzel,4,4
+62,Bife Kobe,4,4
+63,Bife Angus,4,4
