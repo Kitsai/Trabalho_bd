@@ -8,7 +8,8 @@
     "dev:watch": "nodemon src/app.ts",
     "db:init": "dotenv -- cross-var psql -h %DATABASE_HOST% -U %DATABASE_USER% -p %DATABASE_PORT% %DATABASE_NAME% -c \"\\i src/database/initialization/tables.init.sql\"",
     "db:insert": "dotenv -- cross-var psql -h %DATABASE_HOST% -U %DATABASE_USER% -p %DATABASE_PORT% %DATABASE_NAME% -c \"\\i src/database/initialization/rows.insert.sql\"",
-    "db:delete": "dotenv -- cross-var psql -h %DATABASE_HOST% -U %DATABASE_USER% -p %DATABASE_PORT% %DATABASE_NAME% -c \"\\i src/database/initialization/tables.drop.sql\""
+    "db:delete": "dotenv -- cross-var psql -h %DATABASE_HOST% -U %DATABASE_USER% -p %DATABASE_PORT% %DATABASE_NAME% -c \"\\i src/database/initialization/tables.drop.sql\"",
+    "db:login": "dotenv -- cross-var psql -h %DATABASE_HOST% -U %DATABASE_USER% -p %DATABASE_PORT% %DATABASE_NAME%"
   },
   "keywords": [],
   "author": "",

@@ -1,3 +1,5 @@
+DROP TABLE pedido_entrega;
+DROP TABLE pedido_salao;
 DROP TABLE pedido_alimento;
 DROP TABLE pedido;
 DROP TABLE cliente;

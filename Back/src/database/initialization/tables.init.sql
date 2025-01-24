@@ -1,10 +1,10 @@
 CREATE TABLE fornecedor(
-  codFor INT PRIMARY KEY,
+  codFor SERIAL PRIMARY KEY,
   nome VARCHAR NOT NULL
 );
 
 CREATE TABLE ingrediente(
-  codIng INT PRIMARY KEY,
+  codIng SERIAL PRIMARY KEY,
   nome VARCHAR NOT NULL,
   qtd INT NOT NULL DEFAULT 0,
   codFor INT NOT NULL, 
@@ -15,7 +15,7 @@ CREATE TABLE ingrediente(
 );
 
 CREATE TABLE embalagem(
-  codEmb INT PRIMARY KEY,
+  codEmb SERIAl PRIMARY KEY,
   nome VARCHAR NOT NULL,
   qtd INT NOT NULL DEFAULT 0,
   codFor INT NOT NULL, 
@@ -26,7 +26,7 @@ CREATE TABLE embalagem(
 );
 
 CREATE TABLE louca(
-  codLou INT PRIMARY KEY,
+  codLou SERIAl PRIMARY KEY,
   nome VARCHAR NOT NULL,
   qtd INT NOT NULL DEFAULT 0,
   codFor INT NOT NULL, 
@@ -37,7 +37,7 @@ CREATE TABLE louca(
 );
 
 CREATE TABLE alimento(
-    codAli INT PRIMARY KEY,
+    codAli SERIAL PRIMARY KEY,
     nome VARCHAR NOT NULL,
     preco REAL NOT NULL,
     imagem BYTEA,
@@ -70,7 +70,7 @@ CREATE TABLE alimento_ingrediente(
 );
 
 CREATE TABLE bebida(
-  codBeb INT PRIMARY KEY,
+  codBeb SERIAL PRIMARY KEY,
   qtd INT,
   codAli INT NOT NULL,
   codFor INT,
@@ -85,7 +85,7 @@ CREATE TABLE bebida(
 );
 
 CREATE TABLE sobremesa(
-  codSob INT PRIMARY KEY,
+  codSob SERIAL PRIMARY KEY,
   codAli INT NOT NULL,
 
   CONSTRAINT fk_sobremesa_alimento
@@ -94,7 +94,7 @@ CREATE TABLE sobremesa(
 );
 
 CREATE TABLE prato(
-  codPra INT PRIMARY KEY,
+  codPra SERIAL PRIMARY KEY,
   codAli INT NOT NULL,
 
   CONSTRAINT fk_prato_alimento
@@ -103,7 +103,7 @@ CREATE TABLE prato(
 );
 
 CREATE TABLE hamburguer(
-  codHam INT PRIMARY KEY,
+  codHam SERIAL PRIMARY KEY,
   codAli INT NOT NULL,
 
   CONSTRAINT fk_hamburguer_alimento
@@ -112,7 +112,7 @@ CREATE TABLE hamburguer(
 );
 
 CREATE TABLE funcionario(
-  codFun INT PRIMARY KEY,
+  codFun SERIAL PRIMARY KEY,
   nome VARCHAR NOT NULL,
   codGer INT,
 
@@ -122,7 +122,7 @@ CREATE TABLE funcionario(
 );
 
 CREATE TABLE garcom(
-  codGar INT PRIMARY KEY,
+  codGar SERIAL PRIMARY KEY,
   codFun INT,
 
   CONSTRAINT fk_garcom_funcionario
@@ -131,7 +131,7 @@ CREATE TABLE garcom(
 );
 
 CREATE TABLE entregador(
-  codEnt INT PRIMARY KEY,
+  codEnt SERIAL PRIMARY KEY,
   codFun INT,
   cnh INT,
 
@@ -141,7 +141,7 @@ CREATE TABLE entregador(
 );
 
 CREATE TABLE mesa(
-  codMes INT PRIMARY KEY,
+  codMes SERIAL PRIMARY KEY,
   nome CHAR(1),
   nLugares INT,
   reservada BOOL,
@@ -153,7 +153,7 @@ CREATE TABLE mesa(
 );
 
 CREATE TABLE cliente(
-  codCli INT PRIMARY KEY,
+  codCli SERIAL PRIMARY KEY,
   nome VARCHAR NOT NULL,
   endereco VARCHAR,
   codMes INT,
@@ -169,9 +169,8 @@ CREATE TABLE cliente(
 );
 
 CREATE TABLE pedido(
-  codPed INT PRIMARY KEY,
-  entrega BOOL NOT NULL DEFAULT FALSE,
-  time TIMESTAMP WITH TIME ZONE DEFAULT NOW(), 
+  codPed SERIAL PRIMARY KEY,
+  time TIMESTAMP WITH TIME ZONE DEFAULT NOW() 
 );
 
 CREATE TABLE pedido_alimento(
@@ -192,7 +191,7 @@ CREATE TABLE pedido_alimento(
 );
 
 CREATE TABLE pedido_salao(
-  codPedSal INT PRIMARY KEY,
+  codPedSal SERIAL PRIMARY KEY,
   codPed INT NOT NULL,
   codMes INT NOT NULL,
 
@@ -206,7 +205,7 @@ CREATE TABLE pedido_salao(
 );
 
 CREATE TABLE pedido_entrega(
-  codPedEnt INT PRIMARY KEY,
+  codPedEnt SERIAL PRIMARY KEY,
   codPed INT NOT NULL,
   codCli INT NOT NULL,
 
