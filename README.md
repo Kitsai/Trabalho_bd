@@ -41,9 +41,7 @@ Com os conteiners docker iniciados podemos inicializar o banco
 então temos que rodar os seguintes comandos em ordem na primeira vez:
 
 ```bash
-npm run db:init
-npm run db:insert
-npm run db:images
+npm run db:first
 ```
 
 para rodar o back podemos usar o comando
