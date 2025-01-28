@@ -1,3 +1,4 @@
+DROP PROCEDURE reestocar;
 DROP VIEW alimentos_disp;
 DROP TABLE pedido_entrega CASCADE;
 DROP TABLE pedido_salao CASCADE;

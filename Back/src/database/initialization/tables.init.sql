@@ -233,3 +233,38 @@ OR (
 	WHERE b.codAli = a.codAli
 )
 ORDER BY codAli;
+
+CREATE OR REPLACE PROCEDURE reestocar()
+LANGUAGE plpgsql
+AS $$
+	DECLARE
+		ingCur CURSOR FOR SELECT codIng FROM ingrediente;
+		louCur CURSOR FOR SELECT codLou FROM louca;
+		embCur CURSOR FOR SELECT codEmb FROM embalagem;
+		bebCur CURSOR FOR SELECT codBeb FROM bebida;
+	BEGIN
+		FOR ing IN ingCur LOOP
+			UPDATE ingrediente SET
+				qtd = 10
+			WHERE codIng = ing.codIng;
+		END LOOP;
+		
+		FOR lou IN louCur LOOP
+			UPDATE louca SET
+				qtd = 10
+			WHERE codLou = lou.codLou;
+		END LOOP;
+			
+		FOR emb IN embCur LOOP
+			UPDATE embalagem SET
+				qtd = 10
+			WHERE codEmb = emb.codEmb;
+		END LOOP;
+	
+		FOR beb IN bebCur LOOP
+			UPDATE bebida SET
+				qtd = 10
+			WHERE codBeb = beb.codBeb;
+		END LOOP;
+	END;
+$$;
