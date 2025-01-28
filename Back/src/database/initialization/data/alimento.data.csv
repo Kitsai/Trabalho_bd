@@ -1,0 +1,82 @@
+1,Água,2,2,4
+2,Água com Gás,2,2,4
+3,Suco de Laranja,2,2,8
+4,Suco de Uva,2,2,8
+5,Suco de Limão,2,2,8
+6,Suco de Morango,2,2,8
+7,Suco de Maracujá,2,2,8
+8,Suco de Pêssego,2,2,8
+9,Chá Gelado de Limão,2,2,9
+10,Chá Gelado de Pêssego,2,2,9
+11,Refrigerante de Limão,2,2,7
+12,Refrigerante de Cola,2,2,7
+13,Refrigerante de Uva,2,2,7
+14,Refrigerante de Guaraná,2,2,7
+15,Refrigerante de Laranja,2,2,7
+16,Casq Chocolate,3,3,4.50
+17,Casq Mista,3,3,4.50
+18,Casq Baunilha,3,3,4.50
+19,Sund Bau Cho,1,1,10.00
+20,Sund Bau Mor,1,1,10.00
+21,Sund Bau Car,1,1,10.00
+22,Sund Bau Pis,1,1,10.00
+23,Sund Mis Cho,1,1,10.00
+24,Sund Mis Mor,1,1,10.00
+25,Sund Mis Car,1,1,10.00
+26,Sund Mis Pis,1,1,10.00
+27,Sund Cho Cho,1,1,10.00
+28,Sund Cho Mor,1,1,10.00
+29,Sund Cho Car,1,1,10.00
+30,Sund Cho Pis,1,1,10.00
+31,Milk Shake Cho,2,2,15.00
+32,Milk Shake Mor,2,2,15.00
+33,Milk Shake Car,2,2,15.00
+34,Milk Shake Pis,2,2,15.00
+35,Parmegiana de Frango,4,4,30.00
+36,Parmegiana de Carne,4,4,37.00
+37,Parmegiana Vegana,4,4,33.00
+38,Estrogonofe de Frango,4,4,31.00
+39,Estrogonofe de Carne,4,4,38.00
+40,Brasileiríssimo Frango,4,4,28.00
+41,Brasileiríssima Carne,4,4,35.00
+42,Picanha Assada,4,4,40.00
+43,Tilápia Grelhada,4,4,38.00
+44,Brasileiríssimo Vegano,4,4,30.00
+45,Salada Normal,4,4,22.00
+46,Salada César,4,4,25.00
+47,Salada Vegana,4,4,26.00
+48,Salada com Frango,4,4,27.00
+49,Salada com Carne,4,4,34.00
+50,Salada com Tilápia,4,4,33.00
+51,Frango à Milanesa,4,4,28.00
+52,Coxa de Frango,4,4,29.00
+53,Medalhão Suíno,4,4,31.00
+54,Bife a Cavalo,4,4,35.00
+55,Frango a Passarinho,4,4,26.00
+56,Linguiça Suína,4,4,28.00
+57,Linguiça de Frango,4,4,25.00
+58,Filé Mignon,4,4,43.00
+59,Costela Bovina,4,4,41.00
+60,Costela Suína,4,4,43.00
+61,Salmão Grelhado,4,4,45.00
+62,Schnitzel,4,4,44.00
+63,Bife Kobe,4,4,56.00
+64,Bife Angus,4,4,51.00
+65,São Paulo,5,5,28.00
+66,Paris,5,5,30.00
+67,Nova Iorque,5,5,29.00
+68,Melbourne,5,5,31.00
+69,Tóquio,5,5,37.00
+70,Berlin,5,5,35.00
+71,Londres,5,5,32.00
+72,Estocolmo,5,5,33.00
+73,Roma,5,5,31.00
+74,Grande São Paulo,5,5,38.00
+75,Grande Paris,5,5,40.00
+76,Grande Nova Iorque,5,5,39.00
+77,Grande Melbourne,5,5,41.00
+78,Grande Tóquio,5,5,47.00
+79,Grande Berlin,5,5,45.00
+80,Grande Londres,5,5,42.00
+81,Grande Estocolmo,5,5,43.00
+82,Grande Roma,5,5,41.00
