@@ -59,7 +59,7 @@ npm run db:login
 ```
 
 que irá iniciar o cli do postgres mas também é possível acessar o endereço
-[http://localhost:8081]
+<http://localhost:8081>
 para acessar o pgadmin
 lá deve ser usado o login **<admin@admin.com>** e senha **password**
 
