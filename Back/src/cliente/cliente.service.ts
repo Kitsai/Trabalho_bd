@@ -1,4 +1,4 @@
-import { DbClient } from "../../database/dbClient";
+import { DbClient } from "../database/dbClient";
 import { ClienteDTO } from "./cliente.dto";
 import { Cliente } from "./cliente.model";
 

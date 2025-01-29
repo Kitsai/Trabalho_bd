@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { fornecedorRouter } from "./fornecedor/controller/fornecedor.controller";
+import { ClienteRouter } from "./cliente/cliente.controller";
 
 export const routers = Router();
 
-routers.use("/fornecedor", fornecedorRouter);
+routers.use("/cliente", ClienteRouter);
