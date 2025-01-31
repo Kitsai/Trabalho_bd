@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { ClienteRouter } from "./cliente/cliente.controller";
-import { PedidoRouter } from "./pedido/pedido.controller";
+import { EntregaRouter } from "./pedido/entrega.controller";
 
 export const routers = Router();
 
 routers.use("/cliente", ClienteRouter);
-routers.use("/pedido", PedidoRouter);
+routers.use("/entrega", EntregaRouter);
