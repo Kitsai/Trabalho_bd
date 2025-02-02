@@ -24,7 +24,7 @@ export class DbClient {
   }
 
   public async query(q: string, v?: any[]) {
-    return this._pool.query(q, v);
+    return await this._pool.query(q, v);
   }
 
   public get pool() {

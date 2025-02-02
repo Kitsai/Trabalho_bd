@@ -43,34 +43,39 @@ export class EntregadorService {
     }
   }
 
-  public async delete(id: number): Promise<Entregador> {
+  public async delete(id: number) {
     const query = `
-      DELETE FROM funcionario
-      WHERE codFun = (SELECT codFun FROM entregador WHERE codEnt = $1)
-      RETURNING *;
+      DO $$
+        DECLARE 
+          id INT;
+        BEGIN
+          DELETE FROM entregador WHERE codEnt = ${id} RETURNING codFun INTO id;
+          DELETE FROM funcionario WHERE codFun = id;
+        END;
+      $$
     `;
 
     try {
-      const res = await this.db.query(query, [id]);
-      return res.rows[0];
+      await this.db.query(query);
     } catch (e) {
       console.error(e);
       throw e;
     }
   }
 
-  public async create(f: EntregadorDTO): Promise<Entregador> {
-    const queryBase = `
-      INSERT INTO funcionario(nome, codGer) VALUES ($1, $2) RETURNING *;
-    `
-    const queryEnt = `
-      INSERT INTO entregador(codFun, cnh) VALUES ($1, $2) RETURNING *;
+  public async create(f: EntregadorDTO) {
+    const query = `
+      DO $$
+        DECLARE 
+          id INT;
+        BEGIN
+          INSERT INTO funcionario(nome, codGer) VALUES ('${f.nome}', ${f.codGer}) RETURNING codFun INTO id;
+          INSERT INTO entregador(codFun, cnh) VALUES (id, ${f.cnh});
+        END;
+      $$;
     `
     try {
-      const res1: Funcionario = (await this.db.query(queryBase, [f.nome, f.codGer])).rows[0];
-      const res2 = (await this.db.query(queryEnt, [res1.codFun, f.cnh])).rows[0];
-
-      return { codFun: res1.codFun, codGer: res1.codGer, nome: res1.nome, codEnt: res2.codEnt, cnh: res2.cnh }
+      await this.db.query(query)
     } catch (e) {
       console.error(e);
       throw e;
@@ -78,19 +83,21 @@ export class EntregadorService {
   }
 
   public async update(f: Entregador): Promise<Entregador> {
-    const query = `
+    const queryBase = `
       UPDATE entregador SET 
         cnh = $1 
       WHERE codEnt = $2;
-
+      `
+    const queryFun = `
       UPDATE funcionario SET 
-        nome = $3,
-        codGer = $4
-      WHERE codFun = $5;
+        nome = $1,
+        codGer = $2
+      WHERE codFun = $3;
     `
 
     try {
-      const res = await this.db.query(query, [f.cnh, f.codEnt, f.nome, f.codGer, f.codFun]);
+      await this.db.query(queryBase, [f.cnh, f.codEnt]);
+      await this.db.query(queryFun, [f.nome, f.codGer, f.codFun]);
       return f;
     } catch (e) {
       console.error(e);
