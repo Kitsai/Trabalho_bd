@@ -56,7 +56,7 @@ export class ClienteService {
     `;
 
     try {
-      const res = await this.db.query(query, [cl.nome, cl.endereco, cl.codMes]);
+      const res = await this.db.query(query, [cl.nome, cl.endereco, cl.codmes]);
 
       return res.rows[0];
     } catch (e) {
@@ -91,7 +91,7 @@ export class ClienteService {
     `;
 
     try {
-      const res = await this.db.query(query, [cl.nome, cl.endereco, cl.codMes, cl.codEnt, cl.codCli]);
+      const res = await this.db.query(query, [cl.nome, cl.endereco, cl.codmes, cl.codent, cl.codcli]);
       return res.rows[0];
     } catch (e) {
       console.error(e);
