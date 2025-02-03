@@ -87,7 +87,8 @@ export class ClienteService {
         endereco = $2,
         codMes = $3,
         codEnt = $4
-      WHERE codCli = $5;
+      WHERE codCli = $5
+      RETURNING *;
     `;
 
     try {
