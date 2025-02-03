@@ -1,21 +1,19 @@
-export interface AlimentoPedido {
-  codAli: number,
-  qtd: number
-}
+import { PedidoAlimento } from "./pedido.model"
+
 export interface PedidoEntregaCreateDTO {
-  codCli: number,
-  alimentos: AlimentoPedido[]
+  codcli: number,
+  alimentos: PedidoAlimento[]
 }
 
 export interface PedidoEntregaUpdateDTO {
-  codPedEnt: number,
+  codpedent: number,
   time: Date,
-  codCli: number,
+  codcli: number,
 }
 
 export interface PedidoEntregaResponseDTO {
-  codPed: number,
+  codped: number,
   time: Date,
-  codPedEnt: number,
-  codCli: number
+  codpedent: number,
+  codcli: number
 }

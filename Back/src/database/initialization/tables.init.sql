@@ -123,7 +123,7 @@ REFERENCES funcionario(codFun)
 
 CREATE TABLE garcom(
 codGar SERIAL PRIMARY KEY,
-codFun INT,
+codFun INT NOT NULL,
 
 CONSTRAINT fk_garcom_funcionario
 FOREIGN KEY (codFun)
@@ -132,7 +132,7 @@ REFERENCES funcionario(codFun)
 
 CREATE TABLE entregador(
 codEnt SERIAL PRIMARY KEY,
-codFun INT,
+codFun INT NOT NULL,
 cnh INT,
 
 CONSTRAINT fk_entregador_funcionario

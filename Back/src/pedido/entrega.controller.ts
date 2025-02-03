@@ -40,6 +40,7 @@ EntregaRouter.post("/", (req, res) => {
 
 EntregaRouter.put("/", (req, res) => {
   const pe: PedidoEntregaUpdateDTO = req.body;
+  console.info(pe)
 
   service.update(pe).then(
     (pe) => res.status(200).send(pe),

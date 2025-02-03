@@ -1,15 +1,20 @@
+export interface PedidoAlimento {
+  codali: number,
+  qtd: number,
+}
 export interface Pedido {
-  codPed: number,
+  codped: number,
   time: Date,
+  alimentos: PedidoAlimento[]
 }
 
 export interface PedidoSalao extends Pedido {
-  codPedSal: number,
-  codMes: number
+  codpedsal: number,
+  codmes: number
 }
 
 export interface PedidoEntrega extends Pedido {
-  codPedEnt: number,
-  codCli: number
+  codpedent: number,
+  codcli: number
 }
 
