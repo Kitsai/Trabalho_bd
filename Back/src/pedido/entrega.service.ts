@@ -1,6 +1,6 @@
 import { DbClient } from "../database/dbClient";
 import { PedidoEntregaCreateDTO, PedidoEntregaUpdateDTO } from "./pedido.dto";
-import { Pedido, PedidoEntrega, PedidoAlimento } from "./pedido.model";
+import { PedidoEntrega, PedidoAlimento } from "./pedido.model";
 
 export class PedidoService {
   private db: DbClient;

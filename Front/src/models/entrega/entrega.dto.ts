@@ -1,4 +1,4 @@
-import { PedidoAlimento } from "./pedido.model"
+import { PedidoAlimento } from "./entrega.model"
 
 export interface PedidoEntregaCreateDTO {
   codcli: number,
