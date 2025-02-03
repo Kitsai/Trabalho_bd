@@ -1,6 +1,6 @@
 import { Funcionario } from "./funcionario.model"
 
 export interface Entregador extends Funcionario {
-  codEnt: number,
+  codent: number,
   cnh: number
 }

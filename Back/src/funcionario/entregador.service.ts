@@ -43,39 +43,37 @@ export class EntregadorService {
     }
   }
 
-  public async delete(id: number) {
-    const query = `
-      DO $$
-        DECLARE 
-          id INT;
-        BEGIN
-          DELETE FROM entregador WHERE codEnt = ${id} RETURNING codFun INTO id;
-          DELETE FROM funcionario WHERE codFun = id;
-        END;
-      $$
+  public async delete(id: number): Promise<Entregador> {
+    const query1 = `
+      DELETE FROM entregador WHERE codEnt = $1 RETURNING *;
     `;
-
+    const query2 = `
+      DELETE FROM funcionario WHERE codFun = $1 RETURNING *;
+    `
     try {
-      await this.db.query(query);
+      const res1 = (await this.db.query(query1, [id])).rows[0];
+      const res2 = (await this.db.query(query2, [res1.codfun])).rows[0];
+
+      return { codfun: res1.codfun, codger: res1.codger, nome: res1.nome, codent: res2.codent, cnh: res2.cnh }
     } catch (e) {
       console.error(e);
       throw e;
     }
   }
 
-  public async create(f: EntregadorDTO) {
-    const query = `
-      DO $$
-        DECLARE 
-          id INT;
-        BEGIN
-          INSERT INTO funcionario(nome, codGer) VALUES ('${f.nome}', ${f.codGer}) RETURNING codFun INTO id;
-          INSERT INTO entregador(codFun, cnh) VALUES (id, ${f.cnh});
-        END;
-      $$;
+  public async create(f: EntregadorDTO): Promise<Entregador> {
+    const query1 = `
+      INSERT INTO funcionario(nome, codGer) VALUES ($1, $2) RETURNING *;
     `
+    const query2 = `
+      INSERT INTO entregador(codFun, cnh) VALUES ($1, $2);
+    `
+
     try {
-      await this.db.query(query)
+      const res1 = (await this.db.query(query1, [f.nome, f.codger])).rows[0];
+      const res2 = (await this.db.query(query2, [res1.codfun, f.cnh])).rows[0];
+
+      return { codfun: res1.codfun, nome: res1.nome, codger: res1.codger, codent: res2.codent, cnh: res2.cnh }
     } catch (e) {
       console.error(e);
       throw e;
@@ -83,25 +81,30 @@ export class EntregadorService {
   }
 
   public async update(f: Entregador): Promise<Entregador> {
-    const queryBase = `
+    const query1 = ` 
       UPDATE entregador SET 
         cnh = $1 
-      WHERE codEnt = $2;
-      `
-    const queryFun = `
-      UPDATE funcionario SET 
+      WHERE codent = $2
+      RETURNING *;
+    `
+
+    const query2 = `
+      UPDATE entregador SET 
         nome = $1,
-        codGer = $2
-      WHERE codFun = $3;
+        codGer = $2 
+      WHERE codFun = $3
+      RETURNING *;
     `
 
     try {
-      await this.db.query(queryBase, [f.cnh, f.codEnt]);
-      await this.db.query(queryFun, [f.nome, f.codGer, f.codFun]);
-      return f;
+      const res1 = (await this.db.query(query1, [f.cnh, f.codent])).rows[0];
+      const res2 = (await this.db.query(query2, [f.nome, f.codger])).rows[0];
+
+      return { codfun: res1.codfun, nome: res1.nome, codger: res1.codger, codent: res2.codent, cnh: res2.cnh }
     } catch (e) {
       console.error(e);
       throw e;
     }
   }
 }
+

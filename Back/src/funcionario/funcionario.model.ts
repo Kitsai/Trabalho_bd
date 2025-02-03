@@ -1,5 +1,5 @@
 export interface Funcionario {
-  codFun: number,
+  codfun: number,
   nome: string,
-  codGer: number
+  codger: number
 }
