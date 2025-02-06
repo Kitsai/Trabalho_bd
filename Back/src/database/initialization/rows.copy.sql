@@ -1,3 +1,4 @@
+\encoding UTF8
 \copy fornecedor(nome) FROM 'src/database/initialization/data/fornecedor.data.csv' WITH(FORMAT CSV)
 \copy ingrediente(nome,qtd,codFor) FROM 'src/database/initialization/data/ingrediente.data.csv' WITH(FORMAT CSV)
 \copy embalagem(nome,qtd,codFor) FROM 'src/database/initialization/data/embalagem.data.csv' WITH(FORMAT CSV)
