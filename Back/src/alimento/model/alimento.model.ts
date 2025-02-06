@@ -1,5 +1,5 @@
 export interface Alimento {
-  codAli: number,
+  codali: number,
   nome: string,
   preco: number,
   imagem: Uint8Array
