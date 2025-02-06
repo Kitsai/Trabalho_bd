@@ -1,7 +1,7 @@
 export interface Cliente {
   codcli: number,
   nome: string,
-  endereco: string,
-  codmes: number,
-  codent: number,
+  endereco: string | null,
+  codmes: number | null,
+  codent: number | null,
 }
