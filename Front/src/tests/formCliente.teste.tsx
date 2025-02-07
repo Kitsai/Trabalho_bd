@@ -1,28 +1,45 @@
 import { X } from "lucide-react";
 import { Cliente } from "../models/cliente/cliente.model";
 import { ClienteDTO } from "../models/cliente/cliente.dto";
-import { FormEvent } from "react";
+import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from "react";
 
 interface FormClienteModalProps {
   cliente?: Cliente,
   closeForm: () => void,
-  handleForm: (cl: Cliente | ClienteDTO) => Promise<void>
+  handleCreateForm?: (cl: ClienteDTO) => Promise<void>
+  handleUpdateForm?: (cl: Cliente) => Promise<void>
 }
 
-export function FormCliente({ cliente, closeForm, handleForm }: FormClienteModalProps) {
+export function FormCliente({ cliente, closeForm, handleCreateForm, handleUpdateForm }: FormClienteModalProps) {
+
+  const [nome, setNome] = useState<string | undefined>(cliente?.nome)
+  const [endereco, setEndereco] = useState<string | undefined>(cliente?.endereco)
+  const [entregador, setEntregador] = useState<number | undefined>(cliente?.codent)
+
+  function handleNomeChange(e: ChangeEvent<HTMLInputElement>) {
+    setNome(e.target.value);
+  }
+
+  function handleEnderecoChange(e: ChangeEvent<HTMLInputElement>) {
+    setEndereco(e.target.value);
+  }
+
+  function handleEntregadorChange(e: ChangeEvent<HTMLInputElement>) {
+    setEntregador(+e.target.value)
+  }
 
   async function submitForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     const data = new FormData(event.currentTarget)
-    const nome = data.get('nome')?.toString();
-    const endereco = data.get('endereco')?.toString();
 
     if (cliente) {
-
+      nome && endereco && entregador && handleUpdateForm && handleUpdateForm({ codcli: cliente.codcli, nome, codent: +entregador, codmes: cliente.codmes, endereco })
     } else {
-      handleForm({ nome, endereco })
+      nome && endereco && handleCreateForm && handleCreateForm({ nome, endereco, codmes: undefined })
     }
+
+    closeForm();
   }
 
   return (
@@ -34,7 +51,7 @@ export function FormCliente({ cliente, closeForm, handleForm }: FormClienteModal
             <X className="size-5 text-zinc-400" />
           </button>
         </div>
-        <form className="space-y-3">
+        <form className="space-y-3" onSubmit={submitForm}>
           <div>
             <span>Nome: </span>
             <input
@@ -42,7 +59,8 @@ export function FormCliente({ cliente, closeForm, handleForm }: FormClienteModal
               className="bg-transparent text-lg placeholder-zinc-400 outline-none"
               type="text"
               placeholder="Nome do cliente"
-              value={cliente && cliente.nome}
+              value={cliente && nome}
+              onChange={handleNomeChange}
             />
           </div>
           <div>
@@ -52,7 +70,8 @@ export function FormCliente({ cliente, closeForm, handleForm }: FormClienteModal
               className="bg-transparent text-lg placeholder-zinc-400 outline-none"
               type="text"
               placeholder="Endereco"
-              value={cliente && cliente.endereco}
+              value={cliente && endereco}
+              onChange={handleEnderecoChange}
             />
           </div>
           {cliente && (
@@ -62,7 +81,8 @@ export function FormCliente({ cliente, closeForm, handleForm }: FormClienteModal
                 name="entregador"
                 className="bg-transparent text-lg placeholder-zinc-400 outline-none"
                 type="text"
-                value={cliente.codent}
+                value={entregador}
+                onChange={handleEntregadorChange}
               />
             </div>
           )}

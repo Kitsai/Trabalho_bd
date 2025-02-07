@@ -18,10 +18,10 @@ export function TesteCliente() {
 
   const [isUpdateOpen, setUpdateOpen] = useState(false);
   const [isCreateOpen, setCreateOpen] = useState(false);
+  const [selectedClient, setSelectedClient] = useState<Cliente | null>(null)
 
-  const clienteAtual = useRef<Cliente | undefined>(undefined)
-
-  function openUpdate() {
+  function openUpdate(c: Cliente) {
+    setSelectedClient(c)
     !isCreateOpen && setUpdateOpen(true);
   }
   function closeUpdate() {
@@ -67,7 +67,6 @@ export function TesteCliente() {
         <ul>
           {
             data.map((cliente: Cliente) => {
-              clienteAtual.current = cliente;
               return (
                 <ClienteListItem
                   cliente={cliente}
@@ -82,8 +81,8 @@ export function TesteCliente() {
       )}
       <button onClick={() => { openCreate() }}>Adicionar</button>
 
-      {isCreateOpen && (<FormCliente closeForm={closeCreate} />)}
-      {isUpdateOpen && (<FormCliente closeForm={closeUpdate} cliente={clienteAtual.current} />)}
+      {isCreateOpen && (<FormCliente handleCreateForm={handleAddCliente} closeForm={closeCreate} />)}
+      {isUpdateOpen && selectedClient && (<FormCliente handleUpdateForm={handleUpdateCliente} closeForm={closeUpdate} cliente={selectedClient} />)}
     </div>
   )
 }

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 interface ClienteListItemProps extends ComponentProps<'li'> {
   cliente: Cliente,
-  openUpdate: () => void,
+  openUpdate: (c: Cliente) => void,
   handleDelete: (id: number) => Promise<void>
 }
 
@@ -18,7 +18,7 @@ export function ClienteListItem({ cliente, openUpdate, handleDelete, ...props }:
       <line />
       <span>{cliente.codent}</span>
       <div className="flex justify-around items-baseline rounded-2xl">
-        <button className='hover:cursor-grab outline-black outline-1' onClick={() => { openUpdate() }}>Editar</button>
+        <button className='hover:cursor-grab outline-black outline-1' onClick={() => { openUpdate(cliente) }}>Editar</button>
         <button className='hover:cursor-grab outline-black outline-1' onClick={() => { handleDelete(cliente.codcli) }}>Deletar</button>
       </div>
     </li >
