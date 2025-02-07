@@ -10,7 +10,9 @@ export function TesteAlimento() {
     getAlimentos
   } = useAlimento();
 
-  getAlimentos()
+  useEffect(() => {
+    console.log(getAlimentos());
+  }, [getAlimentos])
 
   return (
     <div className='bg-cyan-950'>
@@ -20,14 +22,19 @@ export function TesteAlimento() {
       {data && Array.isArray(data) && (
         <ul>
           {
-            data.map((alimento: Alimento) =>
-              <li key={alimento.codali} className="bg-purple-950 p-16 flex items-center justify-between">
-                <div>
-                  <span><strong>{alimento.nome}</strong></span>
-                  <br />
-                  <span>R${alimento.preco}</span>
-                </div>
-              </li>
+            data.map((alimento: Alimento) => <li key={alimento.codali}
+              className="bg-purple-950 p-3 flex items-center justify-start gap-x-12">
+              <div>
+                <span><strong>{alimento.nome}</strong></span>
+                <br />
+                <span>R${alimento.preco}</span>
+              </div>
+              <img
+                src={`data:image/png;base64,${alimento.imagem}`}
+                alt="Alimento"
+                className="w-20 h-20 object-cover"
+              />
+            </li>
             )
           }
         </ul>

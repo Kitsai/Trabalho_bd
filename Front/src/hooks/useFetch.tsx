@@ -6,15 +6,28 @@ export function useFetch<T = any>() {
   const [data, setData] = useState<T | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null);
+
   const controllerRef = useRef<AbortController | null>(null);
 
-  const fetchData = useCallback(async (url: string, method = 'GET', payload: any = null, config = {}) => {
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+    isMounted.current = true;
+    return () => {
+      isMounted.current = false;
+      controllerRef.current?.abort();
+    }
+  }, [])
+
+  const fetchData = useCallback(async (url: string, method = 'GET', payload: any = null, config: any = {}) => {
 
     controllerRef.current = new AbortController();
 
     try {
-      setLoading(true);
-      setError(null);
+      if (isMounted.current) {
+        setLoading(true);
+        setError(null);
+      }
 
       const response = await api.request({
         url,
@@ -24,14 +37,17 @@ export function useFetch<T = any>() {
         signal: config.signal || controllerRef.current.signal
       });
 
-      setData(response.data);
+      if (isMounted.current) {
+        setData(response.data);
+      }
       return response.data;
-    } catch (err) {
-      if (!axios.isCancel(err)) {
+    } catch (err: any) {
+      if (!axios.isCancel(err) && isMounted.current) {
         setError(err.response?.data?.message || err.message);
       }
     } finally {
-      setLoading(false);
+      if (isMounted.current)
+        setLoading(false);
     }
   }, [])
 

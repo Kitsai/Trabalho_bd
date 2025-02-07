@@ -10,28 +10,17 @@ export class AlimentoService {
 
   public async getDisp(): Promise<Alimento[]> {
     const query = `
-      SELECT codali, nome, preco
-      FROM alimentos_disp;    
+      SELECT codali, nome, preco, imagem
+      FROM alimentos_disp;
     `
     try {
       const res = await this.db.query(query);
+      res.rows.map((ali: any) => {
+        const imageData: Buffer = ali.imagem;
+
+        ali.imagem = imageData.toString('base64')
+      })
       return res.rows;
-    } catch (e) {
-      console.error(e)
-      throw e;
-    }
-
-  }
-
-  public async getAli(id: number): Promise<Alimento> {
-    const query = `
-      SELECT codAli, nome, preco, imagem
-      FROM alimento
-      WHERE codAli = $1;
-    `
-    try {
-      const res = await this.db.query(query, [id]);
-      return res.rows[0];
     } catch (e) {
       console.error(e)
       throw e;
