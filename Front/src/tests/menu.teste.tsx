@@ -9,7 +9,7 @@ export function TesteMenu() {
       <button className="outline-red-50" onClick={() => { navigate('/test/cliente') }}>Cliente</button>
       <button className="outline-red-50" onClick={() => { navigate('/test/entrega') }}>Entrega</button>
       <button className="outline-red-50" onClick={() => { navigate('/test/entregador') }}>Entregador</button>
-      <button className="outline-red-50" onClick={() => { navigate('/test/alimento') }}>Alimento</button>
+      <button className="outline-red-50" onClick={() => { navigate('/test/alimentos') }}>Alimento</button>
     </div>
   </div>
 }

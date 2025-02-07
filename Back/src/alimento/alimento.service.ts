@@ -10,7 +10,7 @@ export class AlimentoService {
 
   public async getDisp(): Promise<Alimento[]> {
     const query = `
-      SELECT codali, nome, preco, imagem
+      SELECT codali, nome, preco
       FROM alimentos_disp;    
     `
     try {
@@ -21,5 +21,20 @@ export class AlimentoService {
       throw e;
     }
 
+  }
+
+  public async getAli(id: number): Promise<Alimento> {
+    const query = `
+      SELECT codAli, nome, preco, imagem
+      FROM alimento
+      WHERE codAli = $1;
+    `
+    try {
+      const res = await this.db.query(query, [id]);
+      return res.rows[0];
+    } catch (e) {
+      console.error(e)
+      throw e;
+    }
   }
 }
