@@ -45,16 +45,16 @@ export function FormCliente({ cliente, closeForm, handleCreateForm, handleUpdate
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
-      <div className="w-[640px] rounded-xl py-5 px-6 bg-zinc-900 space-y-5">
+      <div className="w-[640px] rounded-xl py-5 px-6 bg-light-gray space-y-5">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold">{cliente ? "Atualizar" : "Criar"} Cliente</h2>
+          <h2 className="text-lg text-dark-blue font-semibold">{cliente ? "Atualizar" : "Criar"} Cliente</h2>
           <button type='button' onClick={closeForm}>
             <X className="size-5 text-zinc-400" />
           </button>
         </div>
         <form className="space-y-3" onSubmit={submitForm}>
           <div>
-            <span>Nome: </span>
+            <span className="text-dark-blue">Nome: </span>
             <input
               name="nome"
               className="bg-transparent text-lg placeholder-zinc-400 outline-none"
@@ -65,7 +65,7 @@ export function FormCliente({ cliente, closeForm, handleCreateForm, handleUpdate
             />
           </div>
           <div>
-            <span>Endereco: </span>
+            <span className="text-dark-blue">Endereco: </span>
             <input
               name="endereco"
               className="bg-transparent text-lg placeholder-zinc-400 outline-none"
@@ -77,18 +77,19 @@ export function FormCliente({ cliente, closeForm, handleCreateForm, handleUpdate
           </div>
           {cliente && (
             <div>
-              <span>codEnt: </span>
+              <span className="text-dark-blue">Codigo do Entregador: </span>
               <input
                 name="entregador"
                 className="bg-transparent text-lg placeholder-zinc-400 outline-none"
                 type="text"
+                placeholder="Código do Entregador"
                 value={entregador}
                 onChange={handleEntregadorChange}
               />
             </div>
           )}
 
-          <button type="submit" disabled={(nome && endereco) ? false : true}>
+          <button className="bg-sat-blue text-light-gray pl-5 pr-5 pt-3 pb-3 rounded-xl" type="submit" disabled={(nome && endereco) ? false : true}>
             OK
           </button>
         </form>
