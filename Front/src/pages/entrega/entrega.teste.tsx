@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import { useEntrega } from "../hooks/useEntrega"
-import { PedidoEntregaCreateDTO, PedidoEntregaUpdateDTO } from "../models/entrega/entrega.dto";
-import { PedidoEntrega } from "../models/entrega/entrega.model";
-import { useCliente } from "../hooks/useCliente";
-import { NavBar } from "../components/navbar/navbar";
+import { useEntrega } from "../../hooks/useEntrega"
+import { PedidoEntregaCreateDTO, PedidoEntregaUpdateDTO } from "../../models/entrega/entrega.dto";
+import { PedidoEntrega } from "../../models/entrega/entrega.model";
+import { useCliente } from "../../hooks/useCliente";
+import { NavBar } from "../../components/navbar/navbar";
 
-export function TesteEntrega() {
+export function EntregaPage() {
   const {
     data,
     loading,

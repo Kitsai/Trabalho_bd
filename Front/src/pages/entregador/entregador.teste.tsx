@@ -1,10 +1,10 @@
 import { useEffect } from "react"
-import { useEntregador } from "../hooks/useEntregador"
-import { EntregadorDTO } from "../models/entregador/Entregador.dto"
-import { Entregador } from "../models/entregador/Entregador.model"
-import { NavBar } from "../components/navbar/navbar"
+import { useEntregador } from "../../hooks/useEntregador"
+import { EntregadorDTO } from "../../models/entregador/Entregador.dto"
+import { Entregador } from "../../models/entregador/Entregador.model"
+import { NavBar } from "../../components/navbar/navbar"
 
-export function TesteEntregador() {
+export function EntregadorPage() {
   const {
     data,
     loading,

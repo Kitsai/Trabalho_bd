@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useCliente } from "../hooks/useCliente"
-import { ClienteDTO } from "../models/cliente/cliente.dto";
-import { Cliente } from "../models/cliente/cliente.model";
-import { ClienteListItem } from "../components/cliente/cliente.component";
+import { useCliente } from "../../hooks/useCliente"
+import { ClienteDTO } from "../../models/cliente/cliente.dto";
+import { Cliente } from "../../models/cliente/cliente.model";
+import { ClienteListItem } from "../../components/cliente/cliente.component";
 import { FormCliente } from "./formCliente.teste";
-import { NavBar } from "../components/navbar/navbar";
+import { NavBar } from "../../components/navbar/navbar";
 
-export function TesteCliente() {
+export function ClientePage() {
   const {
     data,
     loading,
@@ -23,7 +23,7 @@ export function TesteCliente() {
 
   function openUpdate(c: Cliente) {
     setSelectedClient(c)
-    if(!isCreateOpen){
+    if (!isCreateOpen) {
       setUpdateOpen(true)
     };
   }
@@ -32,8 +32,9 @@ export function TesteCliente() {
   }
 
   function openCreate() {
-    if(!isUpdateOpen){
-      setCreateOpen(true)};
+    if (!isUpdateOpen) {
+      setCreateOpen(true)
+    };
   }
 
   function closeCreate() {

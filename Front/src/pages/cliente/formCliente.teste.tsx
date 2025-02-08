@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
-import { Cliente } from "../models/cliente/cliente.model";
-import { ClienteDTO } from "../models/cliente/cliente.dto";
+import { Cliente } from "../../models/cliente/cliente.model";
+import { ClienteDTO } from "../../models/cliente/cliente.dto";
 import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from "react";
 
 interface FormClienteModalProps {
