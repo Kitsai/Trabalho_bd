@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useEntregador } from "../hooks/useEntregador"
 import { EntregadorDTO } from "../models/entregador/Entregador.dto"
 import { Entregador } from "../models/entregador/Entregador.model"
+import { NavBar } from "../components/navbar/navbar"
 
 export function TesteEntregador() {
   const {
@@ -38,6 +39,7 @@ export function TesteEntregador() {
 
   return (
     <div className="bg-cyan-950">
+      <NavBar />
       <div className="flex justify-center items-center">
         <h1>Entregador</h1>
         {loading && <p>Loading...</p>}

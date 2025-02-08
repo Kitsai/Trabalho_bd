@@ -3,6 +3,7 @@ import { useEntrega } from "../hooks/useEntrega"
 import { PedidoEntregaCreateDTO, PedidoEntregaUpdateDTO } from "../models/entrega/entrega.dto";
 import { PedidoEntrega } from "../models/entrega/entrega.model";
 import { useCliente } from "../hooks/useCliente";
+import { NavBar } from "../components/navbar/navbar";
 
 export function TesteEntrega() {
   const {
@@ -43,6 +44,7 @@ export function TesteEntrega() {
   }
   return (
     <div className="bg-cyan-950">
+      < NavBar />
       <div className="flex justify-center items-center">
         <h1>Entrega</h1>
         {loading && <p>Loading...</p>}
