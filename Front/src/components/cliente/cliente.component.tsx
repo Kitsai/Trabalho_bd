@@ -15,6 +15,8 @@ export function ClienteListItem({ cliente, openUpdate, handleDelete, ...props }:
       <span>  {cliente.endereco}</span>
       <span>{cliente.codent}</span>
       <div className="flex justify-around items-baseline rounded-2xl">
+
+
         <button className='hover:cursor-grab outline-black outline-1' onClick={() => { openUpdate(cliente) }}>Editar</button>
         <button className='hover:cursor-grab outline-black outline-1' onClick={() => { handleDelete(cliente.codcli) }}>Deletar</button>
       </div>
