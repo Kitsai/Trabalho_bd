@@ -66,12 +66,13 @@ export class EntregadorService {
       INSERT INTO funcionario(nome, codGer) VALUES ($1, $2) RETURNING *;
     `
     const query2 = `
-      INSERT INTO entregador(codFun, cnh) VALUES ($1, $2);
+      INSERT INTO entregador(codFun, cnh) VALUES ($1, $2) RETURNING *;
     `
 
     try {
       const res1 = (await this.db.query(query1, [f.nome, f.codger])).rows[0];
       const res2 = (await this.db.query(query2, [res1.codfun, f.cnh])).rows[0];
+
 
       return { codfun: res1.codfun, nome: res1.nome, codger: res1.codger, codent: res2.codent, cnh: res2.cnh }
     } catch (e) {
@@ -89,7 +90,7 @@ export class EntregadorService {
     `
 
     const query2 = `
-      UPDATE entregador SET 
+      UPDATE funcionario SET 
         nome = $1,
         codGer = $2 
       WHERE codFun = $3
@@ -98,7 +99,7 @@ export class EntregadorService {
 
     try {
       const res1 = (await this.db.query(query1, [f.cnh, f.codent])).rows[0];
-      const res2 = (await this.db.query(query2, [f.nome, f.codger])).rows[0];
+      const res2 = (await this.db.query(query2, [f.nome, f.codger, res1.codfun])).rows[0];
 
       return { codfun: res1.codfun, nome: res1.nome, codger: res1.codger, codent: res2.codent, cnh: res2.cnh }
     } catch (e) {
