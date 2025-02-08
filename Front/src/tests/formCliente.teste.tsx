@@ -12,9 +12,9 @@ interface FormClienteModalProps {
 
 export function FormCliente({ cliente, closeForm, handleCreateForm, handleUpdateForm }: FormClienteModalProps) {
 
-  const [nome, setNome] = useState<string | undefined>(cliente?.nome)
-  const [endereco, setEndereco] = useState<string | undefined>(cliente?.endereco)
-  const [entregador, setEntregador] = useState<number | undefined>(cliente?.codent)
+  const [nome, setNome] = useState<string | undefined>(cliente?.nome || "")
+  const [endereco, setEndereco] = useState<string | undefined>(cliente?.endereco || "")
+  const [entregador, setEntregador] = useState<number | undefined>(cliente?.codent || undefined)
 
   function handleNomeChange(e: ChangeEvent<HTMLInputElement>) {
     setNome(e.target.value);
@@ -31,10 +31,11 @@ export function FormCliente({ cliente, closeForm, handleCreateForm, handleUpdate
   async function submitForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    const data = new FormData(event.currentTarget)
+    console.info(nome, endereco)
 
     if (cliente) {
-      nome && endereco && entregador && handleUpdateForm && handleUpdateForm({ codcli: cliente.codcli, nome, codent: +entregador, codmes: cliente.codmes, endereco })
+      console.info('update', nome, endereco, entregador)
+      nome && endereco && handleUpdateForm && handleUpdateForm({ codcli: cliente.codcli, nome, codent: entregador, codmes: cliente.codmes, endereco })
     } else {
       nome && endereco && handleCreateForm && handleCreateForm({ nome, endereco, codmes: undefined })
     }
@@ -87,7 +88,7 @@ export function FormCliente({ cliente, closeForm, handleCreateForm, handleUpdate
             </div>
           )}
 
-          <button type="submit">
+          <button type="submit" disabled={(nome && endereco) ? false : true}>
             OK
           </button>
         </form>

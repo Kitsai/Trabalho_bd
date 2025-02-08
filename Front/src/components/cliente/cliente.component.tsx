@@ -15,7 +15,6 @@ export function ClienteListItem({ cliente, openUpdate, handleDelete, ...props }:
       <span className="rounded-l text-red-200 bg-pink-800 outline-zinc-900 size-64">{cliente.nome}</span>
       <br />
       <span>  {cliente.endereco}</span>
-      <line />
       <span>{cliente.codent}</span>
       <div className="flex justify-around items-baseline rounded-2xl">
         <button className='hover:cursor-grab outline-black outline-1' onClick={() => { openUpdate(cliente) }}>Editar</button>

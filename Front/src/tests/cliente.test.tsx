@@ -47,6 +47,7 @@ export function TesteCliente() {
   }
 
   const handleUpdateCliente = async (cliente_atualizado: Cliente) => {
+    console.info('here')
     const updated = await updateCliente(cliente_atualizado);
     console.log('Updated Cliente:', updated);
     await getCliente();
