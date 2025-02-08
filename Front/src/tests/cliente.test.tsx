@@ -64,13 +64,15 @@ export function TesteCliente() {
   };
 
   return (
-    <div className='bg-gray-300'>
+    <div className='bg-light-gray'>
       < NavBar />
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      <button onClick={() => { openCreate() }}>Adicionar</button>
+      <div className="container flex flex-col items-center">
+        <button className="text-center text-2xl bg-sat-blue text-light-gray p-2 mt-2 rounded-xl" onClick={() => { openCreate() }}>Adicionar</button>
+      </div>
       {data && Array.isArray(data) && (
-        <ul className="p-10">
+        <ul className="pl-10 pr-10 pb-10 pt-2">
           {
             data.map((cliente: Cliente) => {
               return (

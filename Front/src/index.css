@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
-:root{
-    --color-gray-300: #d3d9d4;
+@theme {
+    --color-light-gray: #d3d9d4;
+    --color-gray-blue: #748d92;
+    --color-sat-blue: #124e66;
+    --color-mid-blue: #2e3944;
+    --color-dark-blue: #212a31;
 }

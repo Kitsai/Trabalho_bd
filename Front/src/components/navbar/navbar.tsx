@@ -1,4 +1,3 @@
-import { PersonStanding } from "lucide-react"
 import { useNavigate } from "react-router"
 
 export function NavBar() {
