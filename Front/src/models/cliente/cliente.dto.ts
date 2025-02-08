@@ -1,5 +1,5 @@
 export interface ClienteDTO {
   nome: string,
-  endereco: string | undefined,
-  codmes: number | undefined
+  endereco: string | null | undefined,
+  codmes: number | null | undefined
 }

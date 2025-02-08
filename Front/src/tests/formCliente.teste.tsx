@@ -1,0 +1,98 @@
+import { X } from "lucide-react";
+import { Cliente } from "../models/cliente/cliente.model";
+import { ClienteDTO } from "../models/cliente/cliente.dto";
+import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from "react";
+
+interface FormClienteModalProps {
+  cliente?: Cliente,
+  closeForm: () => void,
+  handleCreateForm?: (cl: ClienteDTO) => Promise<void>
+  handleUpdateForm?: (cl: Cliente) => Promise<void>
+}
+
+export function FormCliente({ cliente, closeForm, handleCreateForm, handleUpdateForm }: FormClienteModalProps) {
+
+  const [nome, setNome] = useState<string | undefined>(cliente?.nome)
+  const [endereco, setEndereco] = useState<string | undefined>(cliente?.endereco)
+  const [entregador, setEntregador] = useState<number | undefined>(cliente?.codent)
+
+  function handleNomeChange(e: ChangeEvent<HTMLInputElement>) {
+    setNome(e.target.value);
+  }
+
+  function handleEnderecoChange(e: ChangeEvent<HTMLInputElement>) {
+    setEndereco(e.target.value);
+  }
+
+  function handleEntregadorChange(e: ChangeEvent<HTMLInputElement>) {
+    setEntregador(+e.target.value)
+  }
+
+  async function submitForm(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const data = new FormData(event.currentTarget)
+
+    if (cliente) {
+      nome && endereco && entregador && handleUpdateForm && handleUpdateForm({ codcli: cliente.codcli, nome, codent: +entregador, codmes: cliente.codmes, endereco })
+    } else {
+      nome && endereco && handleCreateForm && handleCreateForm({ nome, endereco, codmes: undefined })
+    }
+
+    closeForm();
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
+      <div className="w-[640px] rounded-xl py-5 px-6 bg-zinc-900 space-y-5">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg font-semibold">{cliente ? "Atualizar" : "Criar"} Cliente</h2>
+          <button type='button' onClick={closeForm}>
+            <X className="size-5 text-zinc-400" />
+          </button>
+        </div>
+        <form className="space-y-3" onSubmit={submitForm}>
+          <div>
+            <span>Nome: </span>
+            <input
+              name="nome"
+              className="bg-transparent text-lg placeholder-zinc-400 outline-none"
+              type="text"
+              placeholder="Nome do cliente"
+              value={cliente && nome}
+              onChange={handleNomeChange}
+            />
+          </div>
+          <div>
+            <span>Endereco: </span>
+            <input
+              name="endereco"
+              className="bg-transparent text-lg placeholder-zinc-400 outline-none"
+              type="text"
+              placeholder="Endereco"
+              value={cliente && endereco}
+              onChange={handleEnderecoChange}
+            />
+          </div>
+          {cliente && (
+            <div>
+              <span>codEnt: </span>
+              <input
+                name="entregador"
+                className="bg-transparent text-lg placeholder-zinc-400 outline-none"
+                type="text"
+                value={entregador}
+                onChange={handleEntregadorChange}
+              />
+            </div>
+          )}
+
+          <button type="submit">
+            OK
+          </button>
+        </form>
+
+      </div>
+    </div>
+  )
+}

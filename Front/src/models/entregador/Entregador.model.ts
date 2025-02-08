@@ -1,7 +1,7 @@
 export interface Funcionario {
   codfun: number,
   nome: string,
-  codger: number
+  codger: number | null
 }
 
 export interface Entregador extends Funcionario {

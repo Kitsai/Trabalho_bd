@@ -11,3 +11,4 @@ AlimentoRouter.get("/", (_, res) => {
     (e) => res.status(500).send(e)
   )
 });
+

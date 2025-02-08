@@ -1,5 +1,5 @@
 export interface EntregadorDTO {
   nome: string,
-  codger: number,
+  codger: number | null,
   cnh: number
 }
