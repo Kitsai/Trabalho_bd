@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+:root{
+    --color-gray-300: #d3d9d4;
+}

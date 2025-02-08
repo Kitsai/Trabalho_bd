@@ -136,4 +136,5 @@ dist
 .pnp.*
 
 db/
-pgadmin/
+pgadmin/ 
+compose.yml/

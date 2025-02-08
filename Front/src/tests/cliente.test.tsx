@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCliente } from "../hooks/useCliente"
 import { ClienteDTO } from "../models/cliente/cliente.dto";
 import { Cliente } from "../models/cliente/cliente.model";
 import { ClienteListItem } from "../components/cliente/cliente.component";
 import { FormCliente } from "./formCliente.teste";
+import { NavBar } from "../components/navbar/navbar";
 
 export function TesteCliente() {
   const {
@@ -22,14 +23,17 @@ export function TesteCliente() {
 
   function openUpdate(c: Cliente) {
     setSelectedClient(c)
-    !isCreateOpen && setUpdateOpen(true);
+    if(!isCreateOpen){
+      setUpdateOpen(true)
+    };
   }
   function closeUpdate() {
     setUpdateOpen(false)
   }
 
   function openCreate() {
-    !isUpdateOpen && setCreateOpen(true);
+    if(!isUpdateOpen){
+      setCreateOpen(true)};
   }
 
   function closeCreate() {
@@ -60,12 +64,13 @@ export function TesteCliente() {
   };
 
   return (
-    <div className='bg-cyan-950'>
-      <h1>Clientes</h1>
+    <div className='bg-gray-300'>
+      < NavBar />
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
+      <button onClick={() => { openCreate() }}>Adicionar</button>
       {data && Array.isArray(data) && (
-        <ul>
+        <ul className="p-10">
           {
             data.map((cliente: Cliente) => {
               return (
@@ -80,7 +85,6 @@ export function TesteCliente() {
           }
         </ul>
       )}
-      <button onClick={() => { openCreate() }}>Adicionar</button>
 
       {isCreateOpen && (<FormCliente handleCreateForm={handleAddCliente} closeForm={closeCreate} />)}
       {isUpdateOpen && selectedClient && (<FormCliente handleUpdateForm={handleUpdateCliente} closeForm={closeUpdate} cliente={selectedClient} />)}

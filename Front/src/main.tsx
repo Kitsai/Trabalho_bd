@@ -14,10 +14,10 @@ createRoot(document.getElementById('root')!).render(
     <Routes>
       <Route path='/' element={<Menu />} />
       <Route path='/test' element={<TesteMenu />} />
-      <Route path='/test/cliente' element={<TesteCliente />} />
-      <Route path='/test/alimentos' element={<TesteAlimento />} />
-      <Route path='/test/entrega' element={<TesteEntrega />}></Route>
-      <Route path='/test/entregador' element={<TesteEntregador />}></Route>
+      <Route path='/cliente' element={<TesteCliente />} />
+      <Route path='/alimentos' element={<TesteAlimento />} />
+      <Route path='/entrega' element={<TesteEntrega />}></Route>
+      <Route path='/entregador' element={<TesteEntregador />}></Route>
     </Routes>
   </BrowserRouter>,
 )

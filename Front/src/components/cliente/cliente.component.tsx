@@ -1,6 +1,5 @@
 import { ComponentProps } from "react";
 import { Cliente } from "../../models/cliente/cliente.model";
-import { useNavigate } from "react-router";
 
 interface ClienteListItemProps extends ComponentProps<'li'> {
   cliente: Cliente,
@@ -9,10 +8,9 @@ interface ClienteListItemProps extends ComponentProps<'li'> {
 }
 
 export function ClienteListItem({ cliente, openUpdate, handleDelete, ...props }: ClienteListItemProps) {
-  const navigate = useNavigate()
   return (
-    <li key={cliente.codcli} {...props} className="outline-zinc-950">
-      <span className="rounded-l text-red-200 bg-pink-800 outline-zinc-900 size-64">{cliente.nome}</span>
+    <li key={cliente.codcli} {...props} className="outline-zinc-950 bg-amber-50 my-2 p-5 rounded-2xl">
+      <span className="rounded-l text-black outline-zinc-900 size-64">{cliente.nome}</span>
       <br />
       <span>  {cliente.endereco}</span>
       <span>{cliente.codent}</span>
