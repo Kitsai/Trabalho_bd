@@ -1,8 +1,9 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useEntregador } from "../../hooks/useEntregador"
 import { EntregadorDTO } from "../../models/entregador/Entregador.dto"
 import { Entregador } from "../../models/entregador/Entregador.model"
 import { NavBar } from "../../components/navbar/navbar"
+import { FormEntregador } from "./formEntregador"
 
 export function EntregadorPage() {
   const {
@@ -14,6 +15,31 @@ export function EntregadorPage() {
     updateEntregador,
     deleteEntregador
   } = useEntregador()
+
+  const [isUpdateOpen, setUpdateOpen] = useState(false);
+  const [isCreateOpen, setCreateOpen] = useState(false);
+  const [selectedEntregador, setSelectedEntregador] = useState<Entregador| null>(null);
+
+  function openUpdate(e: Entregador){
+    setSelectedEntregador(e)
+    if(!isCreateOpen){
+      setUpdateOpen(true)
+    };
+  }
+
+  function closeUpdate(){
+    setUpdateOpen(false)
+  }
+
+  function openCreate(){
+    if (!isUpdateOpen){
+      setCreateOpen(true)
+    }
+  }
+
+  function closeCreate(){
+    setCreateOpen(false)
+  }
 
   useEffect(() => {
     console.log(getEntregador())
@@ -49,7 +75,7 @@ export function EntregadorPage() {
           <div className="container flex flex-col items-center">
             <button
               className="text-center text-2xl bg-sat-blue text-light-gray p-2 mt-2 rounded-xs hover:shadow-lg hover:shadow-sat-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              onClick={() => handleAddEntregador({ nome: "Julio", cnh: 246813579, codger: null })}>
+              onClick={() => openCreate()}>
               CRIAR
             </button>
           </div>
@@ -64,14 +90,8 @@ export function EntregadorPage() {
                     <div className="flex justify-between space-x-4 items-baseline rounded-2xl text-dark-blue">
                       <button
                         className="bg-sat-blue text-light-gray p-1.5 rounded-xs shadow-2xs shadow-sat-blue hover:shadow-lg hover:shadow-sat-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-
-                        onClick={() => handleUpdateEntregador({
-                          codent: entregador.codent,
-                          nome: "Juliao",
-                          codger: null,
-                          codfun: entregador.codfun,
-                          cnh: 135792468
-                        })}>Atualizar
+                        onClick={() => openUpdate(entregador)}>
+                        Atualizar
                       </button>
 
                       <button
@@ -85,6 +105,9 @@ export function EntregadorPage() {
               })
             }
           </ul>
+
+          {isCreateOpen && (<FormEntregador handleCreate={handleAddEntregador} closeForm={closeCreate}/>)}
+          {isUpdateOpen && selectedEntregador && (<FormEntregador handleUpdate={handleUpdateEntregador} closeForm={closeUpdate} entregador={selectedEntregador}/>)}
         </div>
       )}
     </div>
