@@ -48,8 +48,10 @@ export function EntregadorPage() {
         <div>
           <div className="container flex flex-col items-center">
           <button 
-          className="text-center text-2xl bg-sat-blue text-light-gray p-2 mt-2 rounded-xl"
-          onClick={() => handleAddEntregador({ nome: "Julio", cnh: 246813579, codger: null })}>CREATE</button>
+          className="text-center text-2xl bg-sat-blue text-light-gray p-2 mt-2 rounded-xs hover:shadow-lg hover:shadow-sat-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          onClick={() => handleAddEntregador({ nome: "Julio", cnh: 246813579, codger: null })}>
+            CREATE
+          </button>
           </div>
           <ul className="pl-10 pr-10 pb-10 pt-2">
             {
@@ -61,7 +63,7 @@ export function EntregadorPage() {
                       </div>
                       <div className="flex justify-between space-x-4 items-baseline rounded-2xl text-dark-blue">
                         <button
-                        className="bg-sat-blue text-light-gray p-1.5 rounded-xs"
+                        className="bg-sat-blue text-light-gray p-1.5 rounded-xs shadow-2xs shadow-sat-blue hover:shadow-lg hover:shadow-sat-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
 
                         onClick={() => handleUpdateEntregador({
                           codent: entregador.codent,
@@ -69,10 +71,14 @@ export function EntregadorPage() {
                           codger: null,
                           codfun: entregador.codfun,
                           cnh: 135792468
-                        })}>Atualizar</button>
+                        })}>Atualizar
+                        </button>
+                        
                         <button 
-                        className="bg-dark-blue text-light-gray p-1.5 rounded-xs"
-                        onClick={() => handleDeleteEntregador(entregador.codent)}>Deletar</button>
+                        className="bg-dark-blue text-light-gray p-1.5 rounded-xs shadow-2xs shadow-dark-blue hover:shadow-lg hover:shadow-dark-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        onClick={() => handleDeleteEntregador(entregador.codent)}>
+                          Deletar
+                        </button>
                       </div>
                   </li>
                 )
