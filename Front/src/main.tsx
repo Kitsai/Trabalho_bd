@@ -5,7 +5,7 @@ import { Routes } from 'react-router'
 import { ClientePage } from './pages/cliente/cliente.page.tsx'
 import { TesteAlimento } from './tests/alimento.test.tsx'
 import { EntregaPage } from './pages/entrega/entrega.page.tsx'
-import { EntregadorPage } from './pages/entregador/entregador.teste.tsx'
+import { EntregadorPage } from './pages/entregador/entregador.page.tsx'
 import { TesteMenu } from './tests/menu.teste.tsx'
 
 createRoot(document.getElementById('root')!).render(

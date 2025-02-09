@@ -88,7 +88,7 @@ export function EntregaPage() {
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
         <button
-          className="text-center text-2xl bg-sat-blue text-light-gray p-2 mt-2 rounded-xl"
+          className="text-center text-2xl bg-sat-blue text-light-gray p-2 mt-2 rounded-xs hover:shadow-lg hover:shadow-sat-blue/40 focus:shadow-none active: opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           onClick={() => openCreate()}
         >CRIAR</button>
       </div>

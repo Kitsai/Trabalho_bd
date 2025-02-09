@@ -19,10 +19,10 @@ export function EntregaListItem({ entrega, clientes, alimentos, openUpdate, hand
         <span><strong>{entrega.codpedent} - {clientes.find((c) => { return c.codcli === entrega.codcli })?.nome} - {new Date(entrega.time).toLocaleString()}</strong></span>
         <div className="flex justify-between space-x-4 items-baseline rounded-2xl">
           <button
-            className="hover:cursor-pointer outline-dark-blue text-dark-blue outline-1 p-1"
+            className="hover:cursor-grab bg-sat-blue text-light-gray p-1.5 rounded-xs shadow-2xs shadow-sat-blue hover:shadow-lg hover:shadow-sat-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             onClick={() => openUpdate(entrega)}>Atualizar</button>
           <button
-            className="hover:cursor-pointer outline-dark-blue text-dark-blue outline-1 p-1"
+            className="hover:cursor-grab bg-dark-blue text-light-gray p-1.5 rounded-xs shadow-2xs shadow-dark-blue hover:shadow-lg hover:shadow-dark-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             onClick={() => handleDelete(entrega.codpedent)}>Deletar</button>
         </div>
       </div>
