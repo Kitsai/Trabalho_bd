@@ -65,7 +65,7 @@ export function ClientePage() {
   };
 
   return (
-    <div className='bg-light-gray'>
+    <div className=''>
       < NavBar />
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
