@@ -7,6 +7,6 @@ export interface PedidoEntregaCreateDTO {
 
 export interface PedidoEntregaUpdateDTO {
   codpedent: number,
-  time: Date,
+  time: string,
   codcli: number,
 }

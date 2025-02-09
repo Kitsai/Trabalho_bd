@@ -16,13 +16,13 @@ export function ClienteListItem({ cliente, openUpdate, handleDelete, ...props }:
           <br />
           <span>{cliente.endereco}</span>
           <span>{cliente.codent}</span>
-        </div>  
+        </div>
         <div className="flex justify-between space-x-4 items-baseline rounded-2xl">
           <button className='hover:cursor-grab outline-dark-blue text-dark-blue outline-1 p-1' onClick={() => { openUpdate(cliente) }}>Editar</button>
           <button className='hover:cursor-grab outline-dark-blue text-dark-blue outline-1 p-1' onClick={() => { handleDelete(cliente.codcli) }}>Deletar</button>
         </div>
-    </li >
+      </li >
     </div>
-    
+
   )
 }

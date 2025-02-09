@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from 'react-router'
 import { Routes } from 'react-router'
 import { ClientePage } from './pages/cliente/cliente.page.tsx'
 import { TesteAlimento } from './tests/alimento.test.tsx'
-import { EntregaPage } from './pages/entrega/entrega.teste.tsx'
+import { EntregaPage } from './pages/entrega/entrega.page.tsx'
 import { EntregadorPage } from './pages/entregador/entregador.teste.tsx'
 import { TesteMenu } from './tests/menu.teste.tsx'
 

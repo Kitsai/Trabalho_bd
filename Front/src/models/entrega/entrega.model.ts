@@ -4,7 +4,7 @@ export interface PedidoAlimento {
 }
 export interface Pedido {
   codped: number,
-  time: Date,
+  time: string,
   alimentos: PedidoAlimento[]
 }
 

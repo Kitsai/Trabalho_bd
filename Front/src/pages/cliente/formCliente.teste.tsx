@@ -34,7 +34,6 @@ export function FormCliente({ cliente, closeForm, handleCreateForm, handleUpdate
     console.info(nome, endereco)
 
     if (cliente) {
-      console.info('update', nome, endereco, entregador)
       nome && endereco && handleUpdateForm && handleUpdateForm({ codcli: cliente.codcli, nome, codent: entregador, codmes: cliente.codmes, endereco })
     } else {
       nome && endereco && handleCreateForm && handleCreateForm({ nome, endereco, codmes: undefined })
