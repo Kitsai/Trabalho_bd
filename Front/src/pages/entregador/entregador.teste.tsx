@@ -61,7 +61,7 @@ export function EntregadorPage() {
                       </div>
                       <div className="flex justify-between space-x-4 items-baseline rounded-2xl text-dark-blue">
                         <button
-                        className="outline-1 outline-dark-blue p-1 rounded-xs"
+                        className="bg-sat-blue text-light-gray p-1.5 rounded-xs"
 
                         onClick={() => handleUpdateEntregador({
                           codent: entregador.codent,
@@ -71,7 +71,7 @@ export function EntregadorPage() {
                           cnh: 135792468
                         })}>Atualizar</button>
                         <button 
-                        className="outline-1 outline-dark-blue p-1 rounded-xs"
+                        className="bg-dark-blue text-light-gray p-1.5 rounded-xs"
                         onClick={() => handleDeleteEntregador(entregador.codent)}>Deletar</button>
                       </div>
                   </li>

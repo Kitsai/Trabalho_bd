@@ -18,8 +18,8 @@ export function ClienteListItem({ cliente, openUpdate, handleDelete, ...props }:
           <span>{cliente.codent}</span>
         </div>  
         <div className="flex justify-between space-x-4 items-baseline rounded-2xl">
-          <button className='hover:cursor-grab outline-dark-blue text-dark-blue outline-1 p-1 rounded-xs' onClick={() => { openUpdate(cliente) }}>Editar</button>
-          <button className='hover:cursor-grab outline-dark-blue text-dark-blue outline-1 p-1 rounded-xs' onClick={() => { handleDelete(cliente.codcli) }}>Deletar</button>
+          <button className='hover:cursor-grab bg-sat-blue text-light-gray p-1.5 rounded-xs' onClick={() => { openUpdate(cliente) }}>Editar</button>
+          <button className='hover:cursor-grab bg-dark-blue text-light-gray p-1.5 rounded-xs' onClick={() => { handleDelete(cliente.codcli) }}>Deletar</button>
         </div>
     </li >
     </div>
