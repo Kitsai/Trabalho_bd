@@ -38,40 +38,54 @@ export function EntregadorPage() {
   }
 
   return (
-    <div className="bg-cyan-950">
+    <div className="">
       <NavBar />
       <div className="flex justify-center items-center">
-        <h1>Entregador</h1>
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
       </div>
       {data && Array.isArray(data) && (
-        <>
-          <ul>
+        <div>
+          <div className="container flex flex-col items-center">
+          <button 
+          className="text-center text-2xl bg-sat-blue text-light-gray p-2 mt-2 rounded-xs hover:shadow-lg hover:shadow-sat-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          onClick={() => handleAddEntregador({ nome: "Julio", cnh: 246813579, codger: null })}>
+            CREATE
+          </button>
+          </div>
+          <ul className="pl-10 pr-10 pb-10 pt-2">
             {
               data.map((entregador: Entregador) => {
                 return (
-                  <li key={entregador.codent} className="bg-purple-950 p-3 flex items-center justify-start gap-x-12">
-                    <div>
-                      <div className="space-x-3">
-                        <span><strong>{entregador.codent} - {entregador.nome} - {entregador.cnh}</strong></span>
-                        <button onClick={() => handleUpdateEntregador({
+                  <li key={entregador.codent} className="bg-amber-50 p-5 flex justify-between items-center gap-x-12 my-3 rounded-xl">
+                      <div>
+                        <span className="text-dark-blue font-semibold">{entregador.codent} - {entregador.nome} - {entregador.cnh}</span>
+                      </div>
+                      <div className="flex justify-between space-x-4 items-baseline rounded-2xl text-dark-blue">
+                        <button
+                        className="bg-sat-blue text-light-gray p-1.5 rounded-xs shadow-2xs shadow-sat-blue hover:shadow-lg hover:shadow-sat-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+
+                        onClick={() => handleUpdateEntregador({
                           codent: entregador.codent,
                           nome: "Juliao",
                           codger: null,
                           codfun: entregador.codfun,
                           cnh: 135792468
-                        })}>Atualizar</button>
-                        <button onClick={() => handleDeleteEntregador(entregador.codent)}>Deletar</button>
+                        })}>Atualizar
+                        </button>
+                        
+                        <button 
+                        className="bg-dark-blue text-light-gray p-1.5 rounded-xs shadow-2xs shadow-dark-blue hover:shadow-lg hover:shadow-dark-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        onClick={() => handleDeleteEntregador(entregador.codent)}>
+                          Deletar
+                        </button>
                       </div>
-                    </div>
                   </li>
                 )
               })
             }
           </ul>
-          <button onClick={() => handleAddEntregador({ nome: "Julio", cnh: 246813579, codger: null })}>CREATE</button>
-        </>
+        </div>
       )}
     </div>
 

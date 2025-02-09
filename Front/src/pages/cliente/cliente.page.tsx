@@ -65,12 +65,15 @@ export function ClientePage() {
   };
 
   return (
-    <div className='bg-light-gray'>
+    <div className=''>
       < NavBar />
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       <div className="container flex flex-col items-center">
-        <button className="text-center text-2xl bg-sat-blue text-light-gray p-2 mt-2 rounded-xl" onClick={() => { openCreate() }}>Adicionar</button>
+        <button className="text-center text-2xl bg-sat-blue text-light-gray p-2 mt-2 rounded-xs hover:shadow-lg hover:shadow-sat-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" 
+        onClick={() => { openCreate() }}>
+          Adicionar
+        </button>
       </div>
       {data && Array.isArray(data) && (
         <ul className="pl-10 pr-10 pb-10 pt-2">
