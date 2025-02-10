@@ -101,8 +101,8 @@ export function ClientePage() {
         </ul>
       )}
 
-      {isCreateOpen && (<FormCliente handleCreateForm={handleAddCliente} closeForm={closeCreate} />)}
-      {isUpdateOpen && selectedClient && (<FormCliente handleUpdateForm={handleUpdateCliente} closeForm={closeUpdate} cliente={selectedClient} />)}
+      {isCreateOpen && (<FormCliente entregadores={dataEnt || []} handleCreateForm={handleAddCliente} closeForm={closeCreate} />)}
+      {isUpdateOpen && selectedClient && (<FormCliente entregadores={dataEnt || []} handleUpdateForm={handleUpdateCliente} closeForm={closeUpdate} cliente={selectedClient} />)}
     </>
   )
 }

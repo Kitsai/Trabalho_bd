@@ -2,19 +2,24 @@ import { X } from "lucide-react";
 import { Cliente } from "../../models/cliente/cliente.model";
 import { ClienteDTO } from "../../models/cliente/cliente.dto";
 import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from "react";
+import { Entregador } from "../../models/entregador/Entregador.model";
 
 interface FormClienteModalProps {
   cliente?: Cliente,
+  entregadores: Entregador[]
   closeForm: () => void,
   handleCreateForm?: (cl: ClienteDTO) => Promise<void>
   handleUpdateForm?: (cl: Cliente) => Promise<void>
 }
 
-export function FormCliente({ cliente, closeForm, handleCreateForm, handleUpdateForm }: FormClienteModalProps) {
+export function FormCliente({ cliente, entregadores, closeForm, handleCreateForm, handleUpdateForm }: FormClienteModalProps) {
 
-  const [nome, setNome] = useState<string | undefined>(cliente?.nome || "")
+  const [nome, setNome] = useState<string>(cliente?.nome || "")
   const [endereco, setEndereco] = useState<string | undefined>(cliente?.endereco || "")
   const [entregador, setEntregador] = useState<number | undefined>(cliente?.codent || undefined)
+
+  const [search, setSearch] = useState<string>(nome || "")
+  const [showDropdown, setShowDropdown] = useState(false)
 
   function handleNomeChange(e: ChangeEvent<HTMLInputElement>) {
     setNome(e.target.value);
@@ -24,8 +29,10 @@ export function FormCliente({ cliente, closeForm, handleCreateForm, handleUpdate
     setEndereco(e.target.value);
   }
 
-  function handleEntregadorChange(e: ChangeEvent<HTMLInputElement>) {
-    setEntregador(+e.target.value)
+  function handleEntSelect(entId: number, entName: string) {
+    setEntregador(entId);
+    setSearch(entName);
+    setShowDropdown(false);
   }
 
   async function submitForm(event: FormEvent<HTMLFormElement>) {
@@ -76,15 +83,36 @@ export function FormCliente({ cliente, closeForm, handleCreateForm, handleUpdate
           </div>
           {cliente && (
             <div>
-              <span className="text-dark-blue">Codigo do Entregador: </span>
+              <span className="text-dark-blue">Entregador: </span>
               <input
                 name="entregador"
                 className="bg-transparent text-lg placeholder-zinc-400 outline-none"
-                type="text"
-                placeholder="Código do Entregador"
-                value={entregador}
-                onChange={handleEntregadorChange}
+                type="search"
+                placeholder="Entregador"
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setShowDropdown(true);
+                }}
+                onFocus={() => setShowDropdown(true)}
               />
+              {showDropdown && search && (
+                <ul className="absolute w-[640px] bg-white border border-gray-300 rounded shadow-md max-h-40 overflow-y-auto mt-1">
+                  {entregadores
+                    .filter((c) =>
+                      c.nome.toLowerCase().includes(search.toLowerCase())
+                    )
+                    .map((c) => (
+                      <li
+                        key={c.codent}
+                        className="px-3 py-2 cursor-pointer hover:bg-gray-200"
+                        onClick={() => handleEntSelect(c.codent, c.nome)}>
+                        {c.nome}
+                      </li>
+                    ))
+                  }
+                </ul>
+              )}
             </div>
           )}
 

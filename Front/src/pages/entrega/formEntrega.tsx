@@ -1,6 +1,6 @@
 import { X } from "lucide-react"
 import { PedidoEntregaCreateDTO, PedidoEntregaUpdateDTO } from "../../models/entrega/entrega.dto"
-import { ChangeEvent, FormEvent, useEffect, useState } from "react"
+import { ChangeEvent, FormEvent, useState } from "react"
 import { Cliente } from "../../models/cliente/cliente.model"
 import { Alimento } from "../../models/alimento/alimento.model"
 import { PedidoAlimento } from "../../models/entrega/entrega.model"
