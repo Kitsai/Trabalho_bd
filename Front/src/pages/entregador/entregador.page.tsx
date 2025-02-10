@@ -18,26 +18,26 @@ export function EntregadorPage() {
 
   const [isUpdateOpen, setUpdateOpen] = useState(false);
   const [isCreateOpen, setCreateOpen] = useState(false);
-  const [selectedEntregador, setSelectedEntregador] = useState<Entregador| null>(null);
+  const [selectedEntregador, setSelectedEntregador] = useState<Entregador | null>(null);
 
-  function openUpdate(e: Entregador){
+  function openUpdate(e: Entregador) {
     setSelectedEntregador(e)
-    if(!isCreateOpen){
+    if (!isCreateOpen) {
       setUpdateOpen(true)
     };
   }
 
-  function closeUpdate(){
+  function closeUpdate() {
     setUpdateOpen(false)
   }
 
-  function openCreate(){
-    if (!isUpdateOpen){
+  function openCreate() {
+    if (!isUpdateOpen) {
       setCreateOpen(true)
     }
   }
 
-  function closeCreate(){
+  function closeCreate() {
     setCreateOpen(false)
   }
 
@@ -64,21 +64,19 @@ export function EntregadorPage() {
   }
 
   return (
-    <div className="">
+    <>
       <NavBar />
       <div className="flex justify-center items-center">
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
+        <button
+          className="text-center text-2xl bg-sat-blue text-light-gray p-2 mt-2 rounded-xs hover:shadow-lg hover:shadow-sat-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          onClick={() => openCreate()}>
+          CRIAR
+        </button>
       </div>
       {data && Array.isArray(data) && (
-        <div>
-          <div className="container flex flex-col items-center">
-            <button
-              className="text-center text-2xl bg-sat-blue text-light-gray p-2 mt-2 rounded-xs hover:shadow-lg hover:shadow-sat-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              onClick={() => openCreate()}>
-              CRIAR
-            </button>
-          </div>
+        <>
           <ul className="pl-10 pr-10 pb-10 pt-2">
             {
               data.map((entregador: Entregador) => {
@@ -106,11 +104,11 @@ export function EntregadorPage() {
             }
           </ul>
 
-          {isCreateOpen && (<FormEntregador handleCreate={handleAddEntregador} closeForm={closeCreate}/>)}
-          {isUpdateOpen && selectedEntregador && (<FormEntregador handleUpdate={handleUpdateEntregador} closeForm={closeUpdate} entregador={selectedEntregador}/>)}
-        </div>
+          {isCreateOpen && (<FormEntregador handleCreate={handleAddEntregador} closeForm={closeCreate} />)}
+          {isUpdateOpen && selectedEntregador && (<FormEntregador handleUpdate={handleUpdateEntregador} closeForm={closeUpdate} entregador={selectedEntregador} />)}
+        </>
       )}
-    </div>
+    </>
 
   )
 }
