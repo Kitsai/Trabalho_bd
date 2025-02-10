@@ -1,8 +1,8 @@
 import { ComponentProps } from "react"
-import { PedidoEntrega } from "../models/entrega/entrega.model"
-import { PedidoAlimento } from "../models/entrega/entrega.model"
-import { Cliente } from "../models/cliente/cliente.model"
-import { Alimento } from "../models/alimento/alimento.model"
+import { PedidoEntrega } from "../../models/entrega/entrega.model"
+import { PedidoAlimento } from "../../models/entrega/entrega.model"
+import { Cliente } from "../../models/cliente/cliente.model"
+import { Alimento } from "../../models/alimento/alimento.model"
 
 interface EntregaListItemProps extends ComponentProps<'li'> {
   entrega: PedidoEntrega,

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavBar } from "../../components/navbar/navbar";
-import { EntregaListItem } from "../../entrega/entrega.component";
+import { EntregaListItem } from "../../components/entrega/entrega.component";
 import { useCliente } from "../../hooks/useCliente";
 import { useEntrega } from "../../hooks/useEntrega";
 import { PedidoEntregaCreateDTO, PedidoEntregaUpdateDTO } from "../../models/entrega/entrega.dto";
