@@ -65,11 +65,11 @@ export function ClientePage() {
   };
 
   return (
-    <div className=''>
+    <>
       < NavBar />
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      <div className="container flex flex-col items-center">
+      <div className="flex justify-center items-center">
+        {loading && <p>Loading...</p>}
+        {error && <p>Error: {error}</p>}
         <button className="text-center text-2xl bg-sat-blue text-light-gray p-2 mt-2 rounded-xs hover:shadow-lg hover:shadow-sat-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           onClick={() => { openCreate() }}>
           CRIAR
@@ -94,6 +94,6 @@ export function ClientePage() {
 
       {isCreateOpen && (<FormCliente handleCreateForm={handleAddCliente} closeForm={closeCreate} />)}
       {isUpdateOpen && selectedClient && (<FormCliente handleUpdateForm={handleUpdateCliente} closeForm={closeUpdate} cliente={selectedClient} />)}
-    </div>
+    </>
   )
 }
