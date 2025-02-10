@@ -5,6 +5,7 @@ import { Cliente } from "../../models/cliente/cliente.model";
 import { ClienteListItem } from "../../components/cliente/cliente.component";
 import { FormCliente } from "./formCliente.teste";
 import { NavBar } from "../../components/navbar/navbar";
+import { useEntregador } from "../../hooks/useEntregador";
 
 export function ClientePage() {
   const {
@@ -16,6 +17,11 @@ export function ClientePage() {
     updateCliente,
     deleteCliente
   } = useCliente();
+
+  const entH = useEntregador();
+  const dataEnt = entH.data;
+  const loadingEnt = entH.loading;
+  const getEnt = entH.getEntregador;
 
   const [isUpdateOpen, setUpdateOpen] = useState(false);
   const [isCreateOpen, setCreateOpen] = useState(false);
@@ -43,7 +49,8 @@ export function ClientePage() {
 
   useEffect(() => {
     console.log(getCliente());
-  }, [getCliente]);
+    console.log(getEnt())
+  }, [getCliente, getEnt]);
 
   const handleAddCliente = async (new_client: ClienteDTO) => {
     const created = await createCliente(new_client);
@@ -82,6 +89,8 @@ export function ClientePage() {
               return (
                 <ClienteListItem
                   cliente={cliente}
+                  entregadores={dataEnt || []}
+                  loadingEnt={loadingEnt}
                   handleDelete={handleDeleteCliente}
                   openUpdate={openUpdate}
                 />

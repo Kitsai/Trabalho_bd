@@ -53,15 +53,9 @@ export function EntregaPage() {
 
   useEffect(() => {
     console.log(getEntrega())
-  }, [getEntrega])
-
-  useEffect(() => {
     console.log(getCliente())
-  }, [getCliente])
-
-  useEffect(() => {
     console.log(getAlimentos())
-  }, [getAlimentos])
+  }, [getEntrega, getCliente, getAlimentos])
 
   async function handleAddEntrega(nova_entrega: PedidoEntregaCreateDTO) {
     console.log(nova_entrega)

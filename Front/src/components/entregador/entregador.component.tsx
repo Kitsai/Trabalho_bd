@@ -8,7 +8,7 @@ interface EntregadorListItemProps extends ComponentProps<'li'> {
 }
 export function EntregadorListItem({ entregador, openUpdate, handleDelete, ...props }: EntregadorListItemProps) {
   return (
-    <li key={entregador.codent} className="bg-amber-50 p-5 flex justify-between items-center gap-x-12 my-3 rounded-xl">
+    <li key={entregador.codent} {...props} className="bg-amber-50 p-5 flex justify-between items-center gap-x-12 my-3 rounded-xl">
       <div>
         <span className="text-dark-blue font-semibold">{entregador.codent} - {entregador.nome} - {entregador.cnh}</span>
       </div>
