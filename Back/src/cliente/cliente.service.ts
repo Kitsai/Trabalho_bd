@@ -12,7 +12,8 @@ export class ClienteService {
   public async getAll(): Promise<Cliente[]> {
     const query = `
       SELECT *
-      FROM cliente;
+      FROM cliente
+      WHERE endereco IS NOT NULL;
     `;
     try {
       let val = await this.db.query(query);
@@ -28,7 +29,8 @@ export class ClienteService {
     const query = `
       SELECT *
       FROM cliente 
-      WHERE codCli = $1;
+      WHERE codCli = $1
+      AND endereco IS NOT NULL;
     `;
 
     try {

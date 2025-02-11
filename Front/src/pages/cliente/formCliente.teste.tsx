@@ -18,7 +18,7 @@ export function FormCliente({ cliente, entregadores, closeForm, handleCreateForm
   const [endereco, setEndereco] = useState<string | undefined>(cliente?.endereco || "")
   const [entregador, setEntregador] = useState<number | undefined>(cliente?.codent || undefined)
 
-  const [search, setSearch] = useState<string>(nome || "")
+  const [search, setSearch] = useState<string>(entregadores.find((e) => e.codent === cliente?.codent)?.nome || "")
   const [showDropdown, setShowDropdown] = useState(false)
 
   function handleNomeChange(e: ChangeEvent<HTMLInputElement>) {
